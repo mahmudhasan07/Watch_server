@@ -9,6 +9,10 @@ app.get("/", async(req,res)=>{
     res.send("Welcome to the API server")
 })
 
+app.get("/products", async(req,res)=>{
+    res.send("no data")
+})
+
 
 
 app.listen(port,()=>{
