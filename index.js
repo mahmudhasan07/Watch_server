@@ -27,7 +27,12 @@ var con = mysql.createConnection({
 app.get("/watches", async(req,res)=>{
     const id = req.query
     console.log(id);
-    const sql = `SELECT * FROM watch ORDER BY Watch_price ${id?.data}`
+    let sql 
+    if(id.data){
+       sql= `SELECT * FROM watch ORDER BY Watch_price ${id?.data}`
+    }else{
+        sql= `SELECT * FROM watch`
+    }
     con.query(sql,(error, data)=>{
         res.send(data)
         if(error){
@@ -37,7 +42,15 @@ app.get("/watches", async(req,res)=>{
 })
 
 app.get("/search/:brand", async(req,res)=>{
-    
+    const data = req.params
+    const sql =`SELECT * FROM watch WHERE Watch_brand = ${data.brand}`
+    con.query(sql,(err,result)=>{
+        res.send(result)
+        if(err){
+            res.send("error")
+        }
+    })
+    console.log(data);
 })
 
 
