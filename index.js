@@ -25,13 +25,19 @@ var con = mysql.createConnection({
 
 
 app.get("/watches", async(req,res)=>{
-    const sql = "SELECT * FROM watch"
+    const id = req.query
+    console.log(id);
+    const sql = `SELECT * FROM watch ORDER BY Watch_price ${id?.data}`
     con.query(sql,(error, data)=>{
         res.send(data)
         if(error){
             res.send("error")
         }
     })
+})
+
+app.get("/search/:brand", async(req,res)=>{
+    
 })
 
 
