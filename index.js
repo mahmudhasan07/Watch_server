@@ -28,7 +28,7 @@ app.get("/watches", async (req, res) => {
     const id = req.query
     console.log(id);
     let sql
-    if (id.data) {
+    if (id.data=="desc" || id.data=="asc") {
         sql = `SELECT * FROM watch ORDER BY Watch_price ${id?.data}`
     } else {
         sql = `SELECT * FROM watch`
@@ -46,6 +46,9 @@ app.get("/search/:brand", async (req, res) => {
     const sql = `SELECT * FROM watch WHERE Watch_brand = '${data?.brand}'`
     con.query(sql, (err, result) => {
         res.send(result)
+        if(err){
+            res.send("error")
+        }
         
     })
     console.log(data);
