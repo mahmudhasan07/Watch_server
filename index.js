@@ -43,12 +43,9 @@ app.get("/watches", async(req,res)=>{
 
 app.get("/search/:brand", async(req,res)=>{
     const data = req.params
-    const sql =`SELECT * FROM watch WHERE Watch_brand = ${data.brand}`
+    const sql =`SELECT * FROM watch WHERE Watch_brand = ${data?.brand}`
     con.query(sql,(err,result)=>{
-        res.send(result)
-        if(err){
-            res.send("error")
-        }
+        console.log(result);
     })
     console.log(data);
 })
