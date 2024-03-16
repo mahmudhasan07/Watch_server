@@ -36,8 +36,17 @@ app.get("/watches", async (req, res) => {
     con.query(sql, (error, data) => {
         res.send(data)
         if (error) {
-            res.send("error")
+            console.log("error");
         }
+    })
+})
+
+app.get("watches/:id", async(req,res)=>{
+    const id = req.params.id
+    const sql = `SELECT * FROM watch WHERE Watch_name =${id}`
+    con.query(sql,(err,result)=>{
+        res.send(res)
+        
     })
 })
 
