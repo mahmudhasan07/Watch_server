@@ -65,12 +65,12 @@ app.get("/search/:brand", async (req, res) => {
     console.log(data);
 })
 
-// app.get("/trending", async(req,res)=>{
-//     const sql = `SELECT * FROM watch ORDER BY ID desc`
-//     con.query(sql, (error, result)=>{
-//         res.send(result)
-//     })
-// })
+app.get("/trending", async(req,res)=>{
+    const sql = `SELECT * FROM watch ORDER BY ID desc`
+    con.query(sql, (error, result)=>{
+        res.send(result)
+    })
+})
 
 
 app.post("/products", async (req, res) => {
