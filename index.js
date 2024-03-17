@@ -43,10 +43,11 @@ app.get("/watches", async (req, res) => {
 
 app.get("/watches/:id", async (req, res) => {
     const id = req.params.id
-    console.log(id);
+    // console.log(id);
     const sql = `SELECT * FROM watch WHERE Watch_name ='${id}'`
     con.query(sql, (err, result) => {
-        res.send(result)
+        // console.log(result[0]);
+        res.send(result[0])
 
     })
 })
@@ -63,6 +64,13 @@ app.get("/search/:brand", async (req, res) => {
     })
     console.log(data);
 })
+
+// app.get("/trending", async(req,res)=>{
+//     const sql = `SELECT * FROM watch ORDER BY ID desc`
+//     con.query(sql, (error, result)=>{
+//         res.send(result)
+//     })
+// })
 
 
 app.post("/products", async (req, res) => {
