@@ -4,10 +4,7 @@ const port = process.env.PORT || 3000
 const app = express()
 require('dotenv').config()
 var mysql = require('mysql');
-app.use(cors({
-    origin: ['http://localhost:5173'],
-    credentials: true
-}))
+app.use(cors())
 app.use(express.json())
 
 app.get("/", async (req, res) => {
