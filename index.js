@@ -74,7 +74,7 @@ app.post("/products", async (req, res) => {
     const data = req.body
     console.log(data);
     // database er name alz single rakba
-    const sql = "INSERT INTO watch(`Watch_name`,`Watch_brand`,`Watch_image`,`Watch_gender`,`Watch_price`,`Watch_note`)  VALUES(?)"
+    const sql = "INSERT INTO watch(`Watch_name`,`Watch_brand`,`Watch_image`,`Watch_gender`,`Watch_price`,`Watch_note`, `watch_type`, `watch_color`)  VALUES(?)"
     if (data) {
         const values = [data?.name, data?.brand, data?.imgURL, data?.gender, data?.price, data?.note]
         con.query(sql, [values], (error, result) => {
