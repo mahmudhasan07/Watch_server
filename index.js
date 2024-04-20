@@ -76,7 +76,7 @@ app.post("/products", async (req, res) => {
     // database er name alz single rakba
     const sql = "INSERT INTO watch(`Watch_name`,`Watch_brand`,`Watch_image`,`Watch_gender`,`Watch_price`,`Watch_note`, `watch_type`, `watch_color`)  VALUES(?)"
     if (data) {
-        const values = [data?.name, data?.brand, data?.imgURL, data?.gender, data?.price, data?.note]
+        const values = [data?.name, data?.brand, data?.imgURL, data?.gender, data?.price, data?.note, data?.type, data?.color]
         con.query(sql, [values], (error, result) => {
             if (error) {
                 return res.send("error paise")
